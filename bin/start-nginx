@@ -8,7 +8,9 @@ mkfifo $psmgr
 erb config/nginx.conf.erb > config/nginx.conf
 
 if [[ -f nginx/config/shared.conf.erb ]]; then
+    echo "shared exists"
     erb nginx/config/shared.conf.erb > nginx/config/shared.conf
+    erb nginx/config/shared.conf.erb > config/shared.conf
 fi
 
 n=1
