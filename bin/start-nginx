@@ -4,7 +4,7 @@ psmgr=/tmp/nginx-buildpack-wait
 rm -f $psmgr
 mkfifo $psmgr
 
-cp nginx/config/* config/
+mv nginx/config/* config/
 
 # Evaluate config to get $PORT
 erb config/nginx.conf.erb > config/nginx.conf
