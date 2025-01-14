@@ -4,13 +4,14 @@ psmgr=/tmp/nginx-buildpack-wait
 rm -f $psmgr
 mkfifo $psmgr
 
+cp nginx/config/* config/
+
 # Evaluate config to get $PORT
 erb config/nginx.conf.erb > config/nginx.conf
 
-if [[ -f nginx/config/shared.conf.erb ]]; then
+if [[ -f config/shared.conf.erb ]]; then
     echo "shared exists"
-    erb nginx/config/shared.conf.erb > nginx/config/shared.conf
-    erb nginx/config/shared.conf.erb > config/shared.conf
+    erb config/shared.conf.erb > config/shared.conf
 fi
 
 n=1
